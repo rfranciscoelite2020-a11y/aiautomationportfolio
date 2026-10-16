@@ -38,6 +38,23 @@
 
   var TOOLS = ["GoHighLevel", "CRM", "Funnels", "Workflows", "Calendars", "SMS", "Email", "AI", "Zapier", "Make", "Webhooks", "Integrations"];
 
+  var CRM_CAPABILITIES = [
+    { num: "01", title: "Pipelines & Opportunity Stages", desc: "Visualize where every lead sits and move deals through a structured, organized pipeline — from new lead to booked and won." },
+    { num: "02", title: "Custom Fields & Tags", desc: "Capture the exact data points your business needs and segment contacts with smart tagging for cleaner follow-up." },
+    { num: "03", title: "Calendars & Booking", desc: "Sync availability, appointments, and reminders so qualified leads book a call without the back-and-forth." },
+    { num: "04", title: "Contact Organization", desc: "A single, clean view of every contact — their history, conversation, and the exact next step your team needs to take." },
+    { num: "05", title: "Automations & Triggers", desc: "Fire the right workflow based on stage changes, tags, form submissions, or inactivity — automatically, in the background." },
+    { num: "06", title: "Visibility & Reporting", desc: "Know what's happening in your pipeline at a glance — activity, status, and outstanding tasks without digging through records." }
+  ];
+
+  var CRM_PIPELINE = [
+    { id: "new", name: "New Lead", tone: "primary", cards: [{ initials: "LM", name: "Inbound Lead", role: "Web form submission", value: "Unassigned", tags: ["New", "Form"], note: "Auto-captured · 1m ago", tone: "primary" }] },
+    { id: "contacted", name: "Contacted", tone: "accent", cards: [{ initials: "SK", name: "Outbound Reply", role: "SMS conversation opened", value: "Replying", tags: ["SMS", "Open"], note: "Follow-up sent", tone: "accent" }] },
+    { id: "qualified", name: "Qualified", tone: "primary", cards: [{ initials: "PN", name: "Qualified Prospect", role: "AI qualification complete", value: "Ready to book", tags: ["Qualified", "Hot"], note: "Routed to sales", tone: "primary" }] },
+    { id: "booked", name: "Appointment Set", tone: "accent", cards: [{ initials: "MT", name: "Booked Call", role: "Calendar invite sent", value: "Tue · 2:00 PM ET", tags: ["Booked", "Reminder"], note: "Pre-call questionnaire", tone: "accent" }] },
+    { id: "won", name: "Closed", tone: "primary", cards: [{ initials: "ED", name: "Closed Opportunity", role: "Appointment completed", value: "Stage updated", tags: ["Won", "Nurture"], note: "Moved to follow-up", tone: "primary" }] }
+  ];
+
   /* ---------- Render helpers ---------- */
   function el(html) { var t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; }
 
@@ -102,6 +119,42 @@
     TOOLS.forEach(function (t, i) {
       row.appendChild(el('<span class="reveal tool-chip" data-delay="' + i * 40 + '">' + t + '</span>'));
     });
+  }
+
+  function renderCrm() {
+    var board = document.getElementById("crm-pipeline");
+    if (board) {
+      CRM_PIPELINE.forEach(function (stage) {
+        var cards = stage.cards.map(function (c) {
+          var tags = c.tags.map(function (t) { return '<span class="crm-tag">' + t + '</span>'; }).join("");
+          var tone = c.tone === "primary" ? "primary" : "accent";
+          return '<div class="crm-card">' +
+            '<div class="crm-card-top">' +
+              '<div class="crm-avatar avatar-' + tone + '">' + c.initials + '</div>' +
+              '<div><div class="crm-card-name">' + c.name + '</div><div class="crm-card-role">' + c.role + '</div></div>' +
+            '</div>' +
+            '<div class="crm-card-value">' + c.value + '</div>' +
+            '<div class="crm-card-tags">' + tags + '</div>' +
+            '<div class="crm-card-note"><span class="crm-check check-' + tone + '">✓</span>' + c.note + '</div>' +
+          '</div>';
+        }).join("");
+        var sTone = stage.tone === "primary" ? "primary" : "accent";
+        board.appendChild(el('<div class="crm-col">' +
+          '<div class="crm-col-head"><span class="crm-col-name"><span class="dot ' + sTone + '"></span>' + stage.name + '</span><span class="crm-col-count">' + stage.cards.length + '</span></div>' +
+          '<div class="crm-col-cards">' + cards + '</div>' +
+        '</div>'));
+      });
+    }
+    var caps = document.getElementById("crm-caps");
+    if (caps) {
+      CRM_CAPABILITIES.forEach(function (cap, i) {
+        caps.appendChild(el('<div class="reveal crm-cap-card" data-delay="' + (i % 3) * 90 + '">' +
+          '<div class="crm-cap-top"><span class="crm-cap-num">' + cap.num + '</span><div class="crm-cap-arrow"><span>↗</span></div></div>' +
+          '<h3>' + cap.title + '</h3>' +
+          '<p>' + cap.desc + '</p>' +
+        '</div>'));
+      });
+    }
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -179,6 +232,25 @@
   /* ---------- Year ---------- */
   function initYear() { var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); }
 
+  /* ---------- WhatsApp widget ---------- */
+  var WA_NUMBER = "639501925955";
+  var WA_MESSAGE = "Hi Randolf, I'd like to talk about a GoHighLevel / automation project.";
+  function initWhatsApp() {
+    var launch = document.getElementById("wa-launch");
+    var card = document.getElementById("wa-card");
+    var close = document.getElementById("wa-close");
+    var link = document.getElementById("wa-link");
+    var icon = document.getElementById("wa-launch-icon");
+    if (!launch || !card) return;
+    if (link) link.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGE);
+    launch.addEventListener("click", function () {
+      var open = card.hasAttribute("hidden");
+      if (open) { card.removeAttribute("hidden"); if (icon) icon.classList.add("wa-x"); }
+      else { card.setAttribute("hidden", ""); if (icon) icon.classList.remove("wa-x"); }
+    });
+    if (close) close.addEventListener("click", function () { card.setAttribute("hidden", ""); if (icon) icon.classList.remove("wa-x"); });
+  }
+
   /* ---------- Init ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     renderServices();
@@ -186,9 +258,11 @@
     renderWork();
     renderWhy();
     renderTools();
+    renderCrm();
     initReveal();
     initHeader();
     initForm();
     initYear();
+    initWhatsApp();
   });
 })();

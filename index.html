@@ -29,6 +29,7 @@
 
       <nav class="nav-pill" id="nav-pill">
         <a href="#services" data-id="services">Services</a>
+        <a href="#crm" data-id="crm">CRM</a>
         <a href="#work" data-id="work">Work</a>
         <a href="#process" data-id="process">Process</a>
         <a href="#about" data-id="about">About</a>
@@ -43,6 +44,7 @@
 
     <div class="mobile-drawer" id="mobile-drawer">
       <a href="#services">Services</a>
+      <a href="#crm">CRM</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
@@ -131,6 +133,40 @@
           <h3>Have a process you want to automate?</h3>
           <p>Tell me what's currently taking up your team's time, and I'll help you turn it into a cleaner, more automated system.</p>
           <a href="#contact" class="btn btn-primary">Let's Talk <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CRM ============ -->
+    <section id="crm" class="section bg-sec-raised-glow">
+      <div class="container">
+        <div class="reveal section-head">
+          <div class="eyebrow">// GoHighLevel CRM</div>
+          <h2>A CRM that knows exactly where every <span class="grad italic bold">lead</span> stands.</h2>
+          <p>I build organized GoHighLevel CRMs where pipelines, custom fields, calendars, and automations work together — so your team always knows the next move for every opportunity.</p>
+        </div>
+
+        <div class="reveal crm-board">
+          <div class="crm-board-head">
+            <div class="crm-board-title">
+              <span class="dot primary"></span>
+              <span>Opportunities Pipeline</span>
+              <span class="crm-sample-pill">Sample board</span>
+            </div>
+            <div class="crm-board-legend">
+              <span><span class="dot primary"></span> Active</span>
+              <span><span class="dot accent"></span> In motion</span>
+            </div>
+          </div>
+          <div class="crm-board-cols" id="crm-pipeline"></div>
+        </div>
+
+        <div class="grid-3 crm-caps" id="crm-caps"></div>
+
+        <div class="reveal cta-block">
+          <h3>Want a CRM this organized?</h3>
+          <p>Tell me how your pipeline currently works, and I'll help you build a GoHighLevel CRM your team can actually keep clean.</p>
+          <a href="#contact" class="btn btn-primary">Let's build your CRM <span class="arrow">↗</span></a>
         </div>
       </div>
     </section>
@@ -378,6 +414,34 @@
       <a href="#hero" class="footer-top">Back to Top ↑</a>
     </div>
   </footer>
+
+  <!-- ============ WHATSAPP FLOATING WIDGET ============ -->
+  <div id="wa-widget" class="wa-widget">
+    <div id="wa-card" class="wa-card" hidden>
+      <div class="wa-card-head">
+        <div class="wa-head-info">
+          <div class="wa-head-icon"><span class="wa-chat-icon"></span></div>
+          <div>
+            <div class="wa-head-title">Chat on WhatsApp</div>
+            <div class="wa-head-sub">Usually replies within a day</div>
+          </div>
+        </div>
+        <button id="wa-close" class="wa-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="wa-card-body">
+        <div class="wa-bubble">
+          Hi there 👋 I'm Randolf. Tell me what you're doing manually and I'll help you turn it into a cleaner, automated system.
+        </div>
+        <a id="wa-link" class="btn btn-primary wa-cta" target="_blank" rel="noopener noreferrer">
+          Start WhatsApp Chat
+        </a>
+      </div>
+    </div>
+    <button id="wa-launch" class="wa-launch" aria-label="Open WhatsApp chat">
+      <span class="wa-ping"></span>
+      <span id="wa-launch-icon" class="wa-icon"></span>
+    </button>
+  </div>
 
   <script src="Script.js"></script>
 </body>
