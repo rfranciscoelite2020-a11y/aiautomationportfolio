@@ -229,6 +229,16 @@
   filter: none;
 }
 
+.nav-booking-cta {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .nav-booking-cta {
+    display: inline-flex;
+  }
+}
+
 .btn-ghost {
   display: inline-flex;
   align-items: center;

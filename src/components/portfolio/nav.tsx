@@ -75,7 +75,7 @@ export function Nav() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary hidden h-10 px-5 py-0 sm:inline-flex"
+            className="btn-primary nav-booking-cta h-10 px-5 py-0"
           >
             Book a call
             <ArrowRight className="h-3.5 w-3.5" />
