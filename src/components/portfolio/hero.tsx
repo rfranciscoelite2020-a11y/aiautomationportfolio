@@ -6,102 +6,148 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-obsidian px-5 pb-16 pt-28 text-bone sm:px-8 sm:pb-24 sm:pt-36"
+      className="relative overflow-hidden bg-obsidian px-5 pb-12 pt-28 text-bone sm:px-8 sm:pb-16 sm:pt-36"
     >
-      {/* ambient backdrop */}
       <div className="grid-dots pointer-events-none absolute inset-0 opacity-70" />
       <div
-        className="animate-float-a pointer-events-none absolute -left-32 top-10 h-[34rem] w-[34rem] rounded-full opacity-40 blur-3xl"
+        className="animate-float-a pointer-events-none absolute -left-48 top-12 h-[34rem] w-[34rem] rounded-full opacity-35 blur-3xl"
         style={{
           background: "radial-gradient(circle, oklch(0.665 0.198 38 / 0.5), transparent 65%)",
         }}
       />
       <div
-        className="animate-float-b pointer-events-none absolute -right-40 bottom-0 h-[40rem] w-[40rem] rounded-full opacity-50 blur-3xl"
+        className="animate-float-b pointer-events-none absolute -right-40 top-20 h-[40rem] w-[40rem] rounded-full opacity-40 blur-3xl"
         style={{
           background: "radial-gradient(circle, oklch(0.79 0.13 198 / 0.45), transparent 65%)",
         }}
       />
 
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-7 text-center">
-        <div
-          className="inline-flex items-center gap-2.5 rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-spark backdrop-blur-sm"
-          style={{
-            borderColor: "oklch(0.79 0.13 198 / 0.4)",
-            background: "oklch(0.79 0.13 198 / 0.12)",
-            boxShadow: "0 0 24px oklch(0.79 0.13 198 / 0.3)",
-          }}
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-spark shadow-[0_0_10px_currentColor]" />
-          {PERSON.heroEyebrow}
-        </div>
-
-        <h1 className="font-display text-balance text-[clamp(2.6rem,8vw,5.6rem)] font-normal leading-[1.02] tracking-[-0.035em] text-bone">
-          <span className="block">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.08fr_0.82fr] lg:gap-16">
+        <div className="flex flex-col items-start gap-6">
+          <div
+            className="inline-flex items-center gap-2.5 rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-spark backdrop-blur-sm sm:text-[11px]"
+            style={{
+              borderColor: "oklch(0.79 0.13 198 / 0.4)",
+              background: "oklch(0.79 0.13 198 / 0.12)",
+              boxShadow: "0 0 24px oklch(0.79 0.13 198 / 0.2)",
+            }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-spark shadow-[0_0_10px_currentColor]" />
+            {PERSON.heroEyebrow}
+          </div>
+          <h1 className="max-w-3xl font-display text-balance text-[clamp(2.9rem,6.7vw,5.8rem)] font-normal leading-[0.98] tracking-[-0.045em] text-bone">
             {PERSON.heroTitleTop}{" "}
             <span className="text-spark-grad">{PERSON.heroTitleAccentTop}</span>
-          </span>
-          <span className="block">
+            <br />
             {PERSON.heroTitleBottom}{" "}
-            <span className="text-spark-grad">{PERSON.heroTitleAccentBottom}</span>
-          </span>
-        </h1>
+            <span className="text-spark-grad italic">{PERSON.heroTitleAccentBottom}</span>
+          </h1>
 
-        <p className="max-w-2xl text-balance text-[clamp(1rem,1.4vw,1.2rem)] leading-relaxed text-bone-soft">
-          {PERSON.heroBody}
-        </p>
+          <p className="max-w-xl text-balance text-[clamp(1rem,1.3vw,1.12rem)] leading-[1.85] text-bone-soft">
+            I build GoHighLevel CRM systems, AI agents, and follow-up workflows that turn more
+            inquiries into booked appointments and paying customers.
+          </p>
 
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
-          <a href="#work" className="btn-primary pulse-cta w-full sm:w-auto">
-            View my work
-            <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost btn-ghost-on-dark w-full sm:w-auto"
-          >
-            Book a free consultation
-            <ArrowRight className="h-3.5 w-3.5" />
-          </a>
+          <div className="flex w-full flex-col gap-3 pt-1 sm:w-auto sm:flex-row">
+            <a href="#work" className="btn-primary pulse-cta w-full sm:w-auto">
+              Explore selected work
+              <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost btn-ghost-on-dark w-full sm:w-auto"
+            >
+              Book a consultation
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
+
+          <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-bone-line pt-5 font-mono text-[11px] text-bone-soft">
+            <span className="inline-flex items-center gap-2">
+              <span className="live-dot h-1.5 w-1.5 rounded-full bg-success text-success" />
+              Available for select projects
+            </span>
+            <span className="hidden h-1 w-1 rounded-full bg-bone-soft sm:block" />
+            <span>Manila, Philippines · Working worldwide</span>
+          </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 font-mono text-xs text-bone-soft">
-          <span className="inline-flex items-center gap-2">
-            <span className="live-dot h-1.5 w-1.5 rounded-full bg-success text-success" />
-            <span className="text-bone">Available for work &amp; projects</span>
-          </span>
-          <span>
-            <span className="text-bone-soft">Reply</span>{" "}
-            <span className="text-bone">· &lt; 24h</span>
-          </span>
-          <span>
-            <span className="text-bone-soft">Engagement</span>{" "}
-            <span className="text-bone">· Sprint-based</span>
-          </span>
-        </div>
+        <Reveal className="relative mx-auto w-full max-w-[26rem] lg:mr-0" delay={120}>
+          <div className="absolute -inset-5 rounded-[2.5rem] bg-linear-to-br from-spark/20 via-transparent to-ember/20 blur-2xl" />
+          <div className="relative rounded-[2rem] border border-bone-line bg-white/[0.04] p-2 shadow-[0_35px_100px_-40px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-obsidian-2">
+              <img
+                src={PERSON.avatar}
+                alt={`Portrait of ${PERSON.fullName}`}
+                className="h-full w-full object-cover object-center"
+                fetchPriority="high"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-obsidian via-obsidian/5 to-obsidian/10" />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-bone-line bg-obsidian/55 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-bone backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                  Systems built for people
+                </div>
+                <div className="font-display text-3xl text-bone">
+                  {PERSON.firstName} {PERSON.lastName}
+                </div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-soft">
+                  CRM · AI · Automation
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center justify-between gap-3 px-3 py-4 sm:px-4">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-bone-soft">
+                  Experience
+                </div>
+                <div className="mt-1 text-sm font-semibold text-bone">{PERSON.experience}</div>
+              </div>
+              <div className="h-8 w-px bg-bone-line" />
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-bone-soft">
+                  Focus
+                </div>
+                <div className="mt-1 text-sm font-semibold text-bone">Systems that convert</div>
+              </div>
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-spark/30 bg-spark/10 font-display text-lg text-spark">
+                {PERSON.monogram}
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
 
-        <Reveal className="mt-10 w-full max-w-4xl" delay={120}>
-          <div className="rounded-3xl bg-linear-to-br from-ember to-ember-deep p-px shadow-[0_30px_70px_-25px_oklch(0.665_0.198_38_/_0.6)]">
-            <div className="grid gap-3 rounded-[calc(1.5rem-1px)] bg-obsidian/90 p-5 backdrop-blur-md sm:grid-cols-3 sm:p-6">
-              {HERO_FLOW.map((f) => (
-                <div
-                  key={f.state}
-                  className="flex flex-col gap-2 rounded-2xl border border-bone-line bg-white/[0.03] p-4 text-left backdrop-blur-sm"
-                >
-                  <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.1em] text-bone-soft">
+      <Reveal className="relative mx-auto mt-14 w-full max-w-6xl sm:mt-20" delay={180}>
+        <div className="overflow-hidden rounded-2xl border border-bone-line bg-white/[0.035] backdrop-blur-md">
+          <div className="flex flex-col gap-4 border-b border-bone-line px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-spark">
+                A better lead journey
+              </div>
+              <p className="mt-1 text-sm text-bone-soft">
+                From first inquiry to meaningful follow-up, without the busywork.
+              </p>
+            </div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-bone-soft">
+              Always-on automation
+            </span>
+          </div>
+          <div className="grid sm:grid-cols-3">
+            {HERO_FLOW.map((f, index) => (
+              <div
+                key={f.state}
+                className="flex items-start gap-3 border-b border-bone-line px-5 py-4 last:border-b-0 sm:border-b-0 sm:px-6 sm:py-5 [&:not(:last-child)]:sm:border-r"
+              >
+                <span className="font-mono text-[10px] text-bone-soft">0{index + 1}</span>
+                <div className="min-w-0">
+                  <div className="mb-1 inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.1em] text-bone-soft">
                     <span
                       className="h-1.5 w-1.5 rounded-full"
                       style={{
                         background:
-                          f.color === "spark"
-                            ? "var(--spark)"
-                            : f.color === "ember"
-                              ? "var(--ember)"
-                              : "var(--success)",
-                        boxShadow: "0 0 10px currentColor",
-                        color:
                           f.color === "spark"
                             ? "var(--spark)"
                             : f.color === "ember"
@@ -112,13 +158,13 @@ export function Hero() {
                     {f.state}
                   </div>
                   <div className="text-sm font-semibold text-bone">{f.title}</div>
-                  <div className="font-mono text-[11px] text-bone-soft">{f.meta}</div>
+                  <div className="mt-1 font-mono text-[10px] text-bone-soft">{f.meta}</div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </Reveal>
-      </div>
+        </div>
+      </Reveal>
 
       <Marquee />
     </section>

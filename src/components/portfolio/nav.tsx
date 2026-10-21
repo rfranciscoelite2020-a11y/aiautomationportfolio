@@ -5,11 +5,8 @@ import { cn } from "@/lib/utils";
 
 const LINKS = [
   { label: "Services", href: "#services" },
-  { label: "Works", href: "#work" },
+  { label: "Selected work", href: "#work" },
   { label: "Process", href: "#process" },
-  { label: "Case Study", href: "#case-study" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Certs", href: "#certs" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -32,8 +29,9 @@ export function Nav() {
   return (
     <div className="fixed inset-x-0 top-0 z-[100] flex justify-center px-4 pt-3 sm:pt-4">
       <nav
+        aria-label="Main navigation"
         className={cn(
-          "flex w-full max-w-6xl items-center justify-between gap-4 rounded-full border px-3 py-2 transition-all duration-300 sm:px-5",
+          "flex w-full max-w-6xl items-center justify-between gap-3 rounded-full border px-3 py-2.5 transition-all duration-300 sm:gap-4 sm:px-5",
           scrolled
             ? "border-line bg-paper/80 shadow-[0_8px_30px_-12px_rgba(9,9,11,0.18)] backdrop-blur-xl"
             : "border-bone-line bg-obsidian/40 backdrop-blur-md",
@@ -55,7 +53,7 @@ export function Nav() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-1 xl:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -83,7 +81,9 @@ export function Nav() {
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
           <button
-            aria-label="Open menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((v) => !v)}
             className={cn(
               "grid h-10 w-10 place-items-center rounded-full border transition-colors xl:hidden",
@@ -97,8 +97,9 @@ export function Nav() {
 
       {/* mobile sheet */}
       <div
+        id="mobile-navigation"
         className={cn(
-          "fixed inset-x-4 top-20 z-[99] max-h-[80vh] origin-top overflow-y-auto rounded-3xl border bg-paper p-4 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.3)] transition-all duration-200 xl:hidden",
+          "fixed inset-x-4 top-20 z-[99] max-h-[80vh] origin-top overflow-y-auto rounded-3xl border bg-paper p-4 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.3)] transition-all duration-200 lg:hidden",
           open
             ? "pointer-events-auto scale-100 opacity-100"
             : "pointer-events-none scale-95 opacity-0",

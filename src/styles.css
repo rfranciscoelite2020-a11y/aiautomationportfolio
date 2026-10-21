@@ -359,7 +359,12 @@ textarea.input {
   .animate-marquee,
   .animate-marquee-rev,
   .animate-float,
+  .animate-float-a,
+  .animate-float-b,
   .pulse-cta {
+    animation: none !important;
+  }
+  .live-dot {
     animation: none !important;
   }
   html {
